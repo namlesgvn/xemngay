@@ -104,13 +104,15 @@ st.markdown("Chương trình tính toán Tiết khí và Ngày giờ tốt dựa
 # Tải dữ liệu 1 lần duy nhất
 ts, eph = load_skyfield_data()
 
+
 # Tạo 2 tab để chia nội dung cho gọn
-tab1, tab2 = st.tabs(["📅 Xem Hôm Nay", "🗓️ 30 Ngày Tới (Ngày Tốt)"])
+tab1, tab2 = st.tabs(["📅 Xem Hôm Nay", "🗓️ Ngày Tới (Ngày Tốt)"])
 
 with tab1:
     st.header("Thông Tin Thời Gian Thực")
     
-    now = datetime.now()
+    tz_vietnam = timezone('Asia/Ho_Chi_Minh') # Khai báo múi giờ Việt Nam
+    now = datetime.now(tz_vietnam)           # Lấy thời gian hiện tại CÓ MÚI GIỜ
     
     # 1. Tính Tiết Khí
     ten_tiet_khi, do_hoang_kinh = lay_tiet_khi_chinh_xac(now, ts, eph)
