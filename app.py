@@ -238,15 +238,15 @@ with tab1:
 
 # ================= TAB 2 =================
 with tab2:
-    st.header("🔄 Chuyển đổi ngày Âm - Dương")
+    st.header("🔄 Chuyển đổi ngày Âm lịch - Dương lịch")
     st.caption("Nhập ngày để chuyển đổi và xem chi tiết tốt xấu.")
     
-    type_convert = st.radio("", ["Ngày Dương=>Âm", "Ngày Âm=>Dương"], horizontal=True)
+    type_convert = st.radio("", ["Dương lịch=>Âm lịch", "Âm lịch=>Dương lịch"], horizontal=True)
     result_date_obj = None 
     
     st.divider()
     
-    if type_convert == "Dương sang Âm":
+    if type_convert == "Dương lịch=>Âm lịch":
         d_in = st.date_input("Ngày Dương:", datetime.now(), format="DD/MM/YYYY", key="d2a")
         if st.button("Chuyển đổi", type="primary"):
             result_date_obj = datetime.combine(d_in, datetime.min.time())
