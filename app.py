@@ -114,7 +114,6 @@ def render_day_box(data):
     bg_class = "bg-hoang-dao" if data['is_hoang_dao'] else "bg-hac-dao"
     icon_ngay = "★ HOÀNG ĐẠO" if data['is_hoang_dao'] else "● HẮC ĐẠO"
     
-    # HTML phải viết sát lề trái để tránh lỗi hiển thị code
     html_content = f"""
 <div class="box-ngay {bg_class}">
 <div class="box-flex">
@@ -177,11 +176,10 @@ with st.sidebar:
         </div>
         """, unsafe_allow_html=True)
     
-    st.write("---") # Đường kẻ phân cách
+    st.write("---") 
     st.caption("© LeNamVN Calendar")
     
-    # --- BỘ ĐẾM LƯỢT XEM (MỚI THÊM) ---
-    # Sử dụng dịch vụ visitor-badge miễn phí, key là lenamvn.vn để đếm riêng cho web của bạn
+    # BỘ ĐẾM LƯỢT XEM
     st.markdown("""
     <div style="display: flex; align-items: center; gap: 5px; margin-top: 5px; opacity: 0.7;">
         <small>Lượt truy cập:</small>
@@ -244,6 +242,7 @@ with tab1:
                     "Tuổi": status,
                     "Giờ Tốt": info['gio_tot'].split(',')[0] + "..."
                 })
+        # Sửa lỗi cảnh báo dataframe
         st.dataframe(pd.DataFrame(list_days), use_container_width=True)
 
 # ================= TAB 2 =================
@@ -251,7 +250,9 @@ with tab2:
     st.header("🔄 Chuyển đổi Âm - Dương")
     st.caption("Nhập ngày để chuyển đổi và xem chi tiết tốt xấu.")
     
-    type_convert = st.radio("", ["Dương sang Âm", "Âm sang Dương"], horizontal=True)
+    # SỬA LỖI Ở DÒNG NÀY: Thêm label "Chiều chuyển đổi" và ẩn nó đi (label_visibility="collapsed")
+    type_convert = st.radio("Chiều chuyển đổi", ["Dương sang Âm", "Âm sang Dương"], horizontal=True, label_visibility="collapsed")
+    
     result_date_obj = None 
     
     st.divider()
