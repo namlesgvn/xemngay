@@ -242,14 +242,15 @@ with tab1:
                     "Tuổi": status,
                     "Giờ Tốt": info['gio_tot'].split(',')[0] + "..."
                 })
-        st.dataframe(pd.DataFrame(list_days), use_container_width=True)
+        # DÒNG SỬA: Thay use_container_width=True bằng width="stretch" để hết cảnh báo vàng
+        st.dataframe(pd.DataFrame(list_days), width="stretch")
 
 # ================= TAB 2 =================
 with tab2:
     st.header("🔄 Chuyển đổi Âm - Dương")
     st.caption("Nhập ngày để chuyển đổi và xem chi tiết tốt xấu.")
     
-    # --- ĐÃ SỬA LỖI Ở ĐÂY: NGẮT DÒNG ĐỂ TRÁNH LỖI CÚ PHÁP ---
+    # SỬA LỖI: Code này đã được ngắt dòng an toàn
     type_convert = st.radio(
         "Chiều chuyển đổi",
         ["Dương sang Âm", "Âm sang Dương"],
